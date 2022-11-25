@@ -1,4 +1,4 @@
-<!-- Version 2022.11.20.15.06 -->
+<!-- Version 2022.11.24.23.11 -->
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -21,6 +21,8 @@
   <body onload="loadListeners()">
     <div class="topnav">
       <img alt="Menu" id="menu" src="assets/menu.png"/>
+      <img alt="Settings" class="rimg" src="assets/settings.png"/>
+      <img alt="Help" class="rimg" src="assets/help.png"/>
       <center>
         <div class="title">
           <h1 class="title-text">
@@ -36,47 +38,64 @@
           </h1>
         </div>
       </center>
-      <img alt="Settings" class="rimg" src="assets/settings.png"/>
-      <img alt="Help" class="rimg" src="assets/help.png"/>
     </div>
     <div class="main">
-      <div class="ad" id="lad">
-        <p>
-          Advertisement
-        </p>
-      </div>
-      <div class="game">
-        <center id="c">
-          <div id="info">
-            <h2 class="info" id="clears">
-              Clears:
-            </h2>
-            <h2 class="info" id="time">
-              Time:
-            </h2>
-          </div>
-          <div class="outer">
-            <br/>
-            <div class="play">
-              <p id="prompt">
-                Welcome to the Typist's Trial, this will test your ability to accurately and efficiently replicate displayed text. To begin, please type 'Warm-up.' for a simpler challenge or 'Trial.' for the real deal. Good luck!
-              </p>
+      <!--
+        <div class="ad" id="lad">
+          <p>
+            Advertisement
+          </p>
+        </div>
+      -->
+      <center id="bigger">
+        <div class="game">
+          <center id="c">
+            <div class="infod">
+              <h2 class="info" id="clears">
+                Clears:
+              </h2>
+              <h2 class="info" id="time">
+                Time:
+              </h2>
             </div>
-            <br/>
-            <div class="play">
-              <p id="input">
-                You'll see your typing here, end entries with a punctuation mark to submit. There is no deleting, precision is key. Click the reset button to return to this hub at any time.
-              </p>
+            <div class="outer">
+              <br/>
+              <div class="play">
+                <p id="prompt">
+                  Welcome to the Typist's Trial, this will test your ability to accurately and efficiently replicate displayed text. To begin, please type 'Warm-up.' for a simpler challenge or 'Trial.' for the real deal. Good luck!
+                </p>
+              </div>
+              <br/>
+              <div class="play" id="cin">
+                <p id="input">
+                  You'll see your typing here, end entries with a punctuation mark to submit. There is no deleting, precision is key. Type 'Reset.' to return to this hub at any time.
+                </p>
+              </div>
+              <br/>
             </div>
-            <br/>
-          </div>
-        </center>
-      </div>
-      <div class="ad" id="rad">
-        <p>
-          Revenue
-        </p>
-      </div>
+            <div class="infod">
+              <h2 class="info" id="warm-up">
+                Warm-up Best:
+              </h2>
+              <h2 class="info" id="trial">
+                Trial Best:
+              </h2>
+            </div>
+          </center>
+        </div>
+      </center>
+      <!--
+        <div class="ad" id="rad">
+          <p>
+            Revenue
+          </p>
+        </div>
+      -->
+    </div>
+    <div id="footer">
+      <p>
+        Copyright © Loshun Publishings Corporation, Loshun Development LLC, Loshun Ltd. 2022 Version 22.11.24 All Rights Reserved
+      </p>
     </div>
   </body>
 </html>
