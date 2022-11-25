@@ -1,4 +1,4 @@
-/* Version 2022.11.24.23.13 */
+/* Version 2022.11.25.10.56 */
 
 var home = true;
 var trial = null;
@@ -26,14 +26,24 @@ var prompts = [
 var sentance = null;
 var indexes = [];
 var typedin = "";
+var clears = 0;
+var time = 0;
+var interval;
+var warm_up = localStorage.getItem("warm-up");
+var trialBest = localStorage.getItem("trial");
 
 function loadListeners() {
   window.addEventListener("keydown", function(e) {
     keyDown(e.key);
   });
-//   window.addEventListener("pointerenter", function(e) {
-    
-//   });
+  
+  if (warm_up != null) {
+    document.getElementById("warm-up").textContent = "Warm-up Best: " + warm_up + "s";
+  }
+  
+  if (trial != null) {
+    document.getElemebtById("trial").textContent = "Trial Best: " + trialBest + "s";
+  }
 }
 
 function keyDown(key) {
@@ -72,21 +82,54 @@ function keyDown(key) {
       sentance = prompts[ind][i];
       text.textContent = sentance;
       cin.style.backgroundColor = "#f5ffa5";
+      document.getElementById("clears").textContent = "Clears: 0/5";
+      document.getElementById("time").textContent = "Time: 0s";
       
       indexes.push(i);
       
       setTimeout(function() {
         cin.style.backgroundColor = "#ffffff";
       }, 500);
+      
+      interval = setInterval(function() {
+        time++;
+        document.getElementById("time").textContent = "Time: " + time + "s";
+      }, 1000);
     } else if (sentance != null && typed == sentance) {
       if (indexes.length == 5) {
         home = true;
         sentance = null;
         trial = null;
         indexes = [];
+        clears = 0;
         text.textContent = trial
           ? "Excellent job, you're a keyboard master! Type 'Warm-up.' to take a step back or 'Trial.' to try for a better time. Good luck!"
           : "Well done, you're ready for trial mode! Type 'Warm-up.' again to try for a better time or 'Trial.' for the real deal. Good luck!";
+        cin.style.backgroundColor = "#f5ffa5";
+        document.getElementById("clears").innerHTML = "Clears: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
+        document.getElementById("time").innerHTML = "Time: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
+        
+        clearInterval(interval);
+        
+        if (trial) {
+          if (trialBest == null || time < trialBest) {
+            localStorage.setItem("trial", time);
+            trialBest = time;
+            document.getElementById("trial").textContent = "Trial Best: " + time + "s";
+          }
+        } else {
+          if (warm_up == null || time < warm_up) {
+            localStorage.setItem("warm-up", time);
+            warm_up = time;
+            document.getElementById("warm-up").textContent = "Warm-up Best: " + time + "s";
+          }
+        }
+        
+        time = 0;
+        
+        setTimeout(function() {
+          cin.style.backgroundColor = "#ffffff";
+        }, 500);
       } else {
         let ind = trial ? 1 : 0;
         let b = true;
@@ -106,6 +149,8 @@ function keyDown(key) {
         sentance = prompts[ind][i];
         text.textContent = sentance;
         cin.style.backgroundColor = "#b4fabe";
+        clears++;
+        document.getElementById("clears").textContent = "Clears: " + clears + "/5";
         
         indexes.push(i);
         
@@ -113,19 +158,24 @@ function keyDown(key) {
           cin.style.backgroundColor = "#ffffff";
         }, 500);
       }
-    }
-    else if (typed == "Reset.") {
+    } else if (typed == "Reset.") {
       home = true;
       trial = null;
       sentance = null;
       indexes = [];
+      clears = 0;
+      time = 0;
 
       text.textContent =
         "Welcome to the Typist's Trial, this will test your ability to accurately and efficiently replicate displayed text. " +
         "To begin, please type 'Warm-up.' for a simpler challenge or 'Trial.' for the real deal. Good luck!";
       input.textContent =
         "You'll see your typing here, end entries with a punctuation mark to submit. " +
-        "There is no deleting, precision is key. Click the reset button to return to this hub at any time."
+        "There is no deleting, precision is key. Click the reset button to return to this hub at any time.";
+      document.getElementById("clears").innerHTML = "Clears: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
+      document.getElementById("time").innerHTML = "Time: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
+      
+      clearInterval(interval);
     } else {
       cin.style.backgroundColor = "#fabeb4";
       
