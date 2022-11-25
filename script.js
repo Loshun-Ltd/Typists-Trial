@@ -1,4 +1,4 @@
-/* Version 2022.11.20.15.07 */
+/* Version 2022.11.24.23.13 */
 
 var home = true;
 var trial = null;
@@ -39,6 +39,7 @@ function loadListeners() {
 function keyDown(key) {
   var input = document.getElementById("input");
   var text = document.getElementById("prompt");
+  var cin = document.getElementById("cin");
   
   if (key.length == 1) {
     if (home || input.textContent == " ") {
@@ -70,12 +71,12 @@ function keyDown(key) {
 
       sentance = prompts[ind][i];
       text.textContent = sentance;
-      input.style.backgroundColor = "#7f7f1f";
+      cin.style.backgroundColor = "#f5ffa5";
       
       indexes.push(i);
       
       setTimeout(function() {
-        input.style.backgroundColor = "#112233";
+        cin.style.backgroundColor = "#ffffff";
       }, 500);
     } else if (sentance != null && typed == sentance) {
       if (indexes.length == 5) {
@@ -104,34 +105,33 @@ function keyDown(key) {
         
         sentance = prompts[ind][i];
         text.textContent = sentance;
-        input.style.backgroundColor = "#1f7f1f";
+        cin.style.backgroundColor = "#b4fabe";
         
         indexes.push(i);
         
         setTimeout(function() {
-          input.style.backgroundColor = "#112233";
+          cin.style.backgroundColor = "#ffffff";
         }, 500);
       }
+    }
+    else if (typed == "Reset.") {
+      home = true;
+      trial = null;
+      sentance = null;
+      indexes = [];
+
+      text.textContent =
+        "Welcome to the Typist's Trial, this will test your ability to accurately and efficiently replicate displayed text. " +
+        "To begin, please type 'Warm-up.' for a simpler challenge or 'Trial.' for the real deal. Good luck!";
+      input.textContent =
+        "You'll see your typing here, end entries with a punctuation mark to submit. " +
+        "There is no deleting, precision is key. Click the reset button to return to this hub at any time."
     } else {
-      input.style.backgroundColor = "#7f1f1f";
+      cin.style.backgroundColor = "#fabeb4";
       
       setTimeout(function() {
-        input.style.backgroundColor = "#112233";
+        cin.style.backgroundColor = "#ffffff";
       }, 500);
     }
   }
-}
-
-function reset() {
-  home = true;
-  trial = null;
-  sentance = null;
-  indexes = [];
-  
-  document.getElementById("text").textContent =
-    "Welcome to the Typist's Trial, this will test your ability to accurately and efficiently replicate displayed text. " +
-    "To begin, please type 'Warm-up.' for a simpler challenge or 'Trial.' for the real deal. Good luck!";
-  document.getElementById("input").textContent =
-    "You'll see your typing here, end entries with a punctuation mark to submit. " +
-    "There is no deleting, precision is key. Click the reset button to return to this hub at any time."
 }
