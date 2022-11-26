@@ -1,4 +1,4 @@
-/* Version 2022.11.24.23.11 */
+/* Version 2022.11.26.11.36 */
 
 html {
   height: 100%;
@@ -16,14 +16,15 @@ body {
 .topnav {
   background-color: #3c64f0;
   color: #ffffff;
+  height: 5%;
   overflow: hidden;
   padding: 0%;
   width: 100%;
 }
 
 .topnav img {
-  height: 5%;
-  width: 5%;
+  height: 100%;
+  width: 100%;
 }
 
 #menu {
@@ -48,7 +49,7 @@ body {
 }
 
 .main {
-  height: 90%;
+  height: 80%;
   margin: 0%;
   width: 100%;
 }
@@ -115,9 +116,18 @@ body {
 .play {
   background-color: #ffffff;
   color: #000000;
+  font-size: 175%;
   height: 40%;
-  text-align: left;
   width: 80%;
+}
+
+#prompt {
+  margin: 0%;
+}
+
+#input {
+  height: 100%;
+  width: 100%;
 }
 
 #warm-up {
