@@ -1,4 +1,4 @@
-/* Version 2022.11.26.15.00 */
+/* Version 2022.11.26.15.32 */
 
 var home = true;
 var trial = null;
@@ -17,10 +17,15 @@ var prompts = [
   ],
   [
     "01001000 01100101 01101100 01101100 01101111.",
+    "Attention parents and grandparents of young children, Gerber Life is accepting applications for their affordable grow-up plan!",
     "Hello, we've been trying to reach you about your car's extended warranty.",
     "I'm afraid you've contracted pneumonoultramicroscopicsilicovolcanoconiosis.",
+    "I'm off to visit my aunt in Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.",
     "The FitnessGram Pacer Test is a multistage aerobic capacity test that gets progressively more difficult as it continues.",
-    "This Disney DVD is enhanced with Disney's FastPlay, your movie and a selection of bonus features will begin automatically."
+    "There are so many colorful words for nonsense, for example: balderdash, gobbledygook, hogwash, malarkey, and more.",
+    "This Disney DVD is enhanced with Disney's FastPlay, your movie and a selection of bonus features will begin automatically.",
+    "Use control+space to enable the international keyboard, make sure to disable it afterward.",
+    "Why, isn't this test supercalifragilisticexpialidocious?"
   ]
 ];
 var sentance = null;
