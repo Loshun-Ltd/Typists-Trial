@@ -1,4 +1,4 @@
-/* Version 2022.11.26.09.16 */
+/* Version 2022.11.26.15.00 */
 
 var home = true;
 var trial = null;
@@ -103,7 +103,6 @@ function keyDown(key) {
       if (indexes.length == 5) {
         home = true;
         sentance = null;
-        trial = null;
         indexes = [];
         clears = 0;
         text.textContent = trial
@@ -130,6 +129,7 @@ function keyDown(key) {
         }
         
         time = 0;
+        trial = null;
         
         setTimeout(function() {
           cin.style.backgroundColor = "#ffffff";
