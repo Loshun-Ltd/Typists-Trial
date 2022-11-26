@@ -1,4 +1,4 @@
-/* Version 2022.11.25.10.56 */
+/* Version 2022.11.26.09.16 */
 
 var home = true;
 var trial = null;
@@ -31,6 +31,7 @@ var time = 0;
 var interval;
 var warm_up = localStorage.getItem("warm-up");
 var trialBest = localStorage.getItem("trial");
+var lastKeyTyped = null;
 
 function loadListeners() {
   window.addEventListener("keydown", function(e) {
@@ -58,13 +59,16 @@ function keyDown(key) {
       typedin = "";
     }
     
-    if (key == " ") {
+    if (lastKeyTyped != " " && key == " ") {
+      input.textContent += key;
+    } else if (lastKeyTyped == " " && key == " ") {
       input.innerHTML += "&nbsp;";
     } else {
       input.textContent += key;
     }
     
     typedin += key;
+    lastKeyTyped = key;
   }
   
   if (key == "." || key == "!" || key == "?") {
