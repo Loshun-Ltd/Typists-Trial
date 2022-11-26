@@ -1,4 +1,4 @@
-/* Version 2022.11.26.13.29 */
+/* Version 2022.11.26.15.33 */
 
 html {
   height: 100%;
@@ -49,7 +49,7 @@ body {
 }
 
 .main {
-  height: 80%;
+  height: 85%;
   margin: 0%;
   width: 100%;
 }
@@ -80,7 +80,7 @@ body {
   /*float: left;*/
   height: 100%;
   margin: 1em;
-  width: 60%;
+  width: 70%;
 }
 
 #c {
@@ -109,7 +109,7 @@ body {
 
 .outer {
   background-color: #e6fff0;
-  height: 60%;
+  height: 80%;
   width: 100%;
 }
 
@@ -117,8 +117,12 @@ body {
   background-color: #ffffff;
   color: #000000;
   font-size: 175%;
-  height: 40%;
+  height: 42%;
   width: 80%;
+}
+
+hr {
+  color: #3c64f0;
 }
 
 #prompt {
