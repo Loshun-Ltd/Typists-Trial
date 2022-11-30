@@ -1,4 +1,4 @@
-/* Version 2022.11.26.15.33 */
+/* Version 2022.11.29.22.40 */
 
 html {
   height: 100%;
@@ -16,7 +16,7 @@ body {
 .topnav {
   background-color: #3c64f0;
   color: #ffffff;
-  height: 5%;
+  height: 7.5%;
   overflow: hidden;
   padding: 0%;
   width: 100%;
@@ -44,32 +44,54 @@ body {
   width: 33.333%;
 }
 
+#menudiv {
+  background-color: #ffffff;
+  height: 40%;
+  left: 0%;
+  position: absolute;
+  top: -100%;
+  width: 20%;
+}
+
+#menudiv p {
+  font-size: 200%;
+}
+
+#helpdiv {
+  background-color: #ffffff;
+  height: 40%;
+  position: absolute;
+  right: 0%;
+  top: -100%;
+  width: 20%;
+}
+
+#helpdiv p {
+  font-size: 200%;
+}
+
+#settingsdiv {
+  background-color: #ffffff;
+  height: 40%;
+  position: absolute;
+  right: 0%;
+  top: -100%;
+  width: 20%;
+}
+
+#settingsdiv p {
+  font-size: 200%;
+}
+
 .rimg {
   float: right;
 }
 
 .main {
-  height: 85%;
+  height: 82.5%;
   margin: 0%;
   width: 100%;
 }
-
-.ad {
-  background-color: #ff88bb;
-  float: left;
-  height: 100%;
-  margin: 0%;
-  padding: 1em;
-  width: 20%;
-}
-
-/* #lad {
-  float: left;
-}
-
-#rad {
-  float: right;
-} */
 
 #bigger {
   height: 100%;
@@ -81,10 +103,6 @@ body {
   height: 100%;
   margin: 1em;
   width: 70%;
-}
-
-#c {
-  height: 100%;
 }
 
 .infod {
@@ -143,5 +161,10 @@ hr {
 }
 
 #footer {
-  bottom: 0;
+  bottom: 0%;
+  position: fixed;
+}
+
+#footer p {
+  margin: 0%;
 }
