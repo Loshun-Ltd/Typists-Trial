@@ -1,33 +1,30 @@
-/* Version 2022.11.26.15.32 */
+/* Version 2022.11.30.09.50 */
 
 var home = true;
 var trial = null;
-var prompts = [
-  [
-    "001000101 110100100.",
-    "Buy yourself a copy of the APCS Principles Prep Book.",
-    "Don't expect a WPM score.",
-    "Five dollar foot long.",
-    "Have you heard of the hit game Among Us?",
-    "Hello, world!",
-    "I hope you know how to use the international keyboard.",
-    "The quick brown fox jumps over the lazy dog.",
-    "The record time on the trial is 214 seconds.",
-    "What's the longest town name in Wales?"
-  ],
-  [
-    "01001000 01100101 01101100 01101100 01101111.",
-    "Attention parents and grandparents of young children, Gerber Life is accepting applications for their affordable grow-up plan!",
-    "Hello, we've been trying to reach you about your car's extended warranty.",
-    "I'm afraid you've contracted pneumonoultramicroscopicsilicovolcanoconiosis.",
-    "I'm off to visit my aunt in Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.",
-    "The FitnessGram Pacer Test is a multistage aerobic capacity test that gets progressively more difficult as it continues.",
-    "There are so many colorful words for nonsense, for example: balderdash, gobbledygook, hogwash, malarkey, and more.",
-    "This Disney DVD is enhanced with Disney's FastPlay, your movie and a selection of bonus features will begin automatically.",
-    "Use control+space to enable the international keyboard, make sure to disable it afterward.",
-    "Why, isn't this test supercalifragilisticexpialidocious?"
-  ]
-];
+var prompts = [[
+  "001000101 110100100.",
+  "Buy yourself a copy of the APCS Principles Prep Book.",
+  "Don't expect a WPM score.",
+  "Five dollar foot long.",
+  "Have you heard of the hit game Among Us?",
+  "Hello, world!",
+  "I hope you know how to use the international keyboard.",
+  "The quick brown fox jumps over the lazy dog.",
+  "The record time on the trial is 214 seconds.",
+  "What's the longest town name in Wales?"
+],[
+  "01001000 01100101 01101100 01101100 01101111.",
+  "Attention parents and grandparents of young children, Gerber Life is accepting applications for their affordable grow-up plan!",
+  "Hello, we've been trying to reach you about your car's extended warranty.",
+  "I'm afraid you've contracted pneumonoultramicroscopicsilicovolcanoconiosis.",
+  "I'm off to visit my aunt in Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.",
+  "The FitnessGram Pacer Test is a multistage aerobic capacity test that gets progressively more difficult as it continues.",
+  "There are so many colorful words for nonsense, for example: balderdash, gobbledygook, hogwash, malarkey, and more.",
+  "This Disney DVD is enhanced with Disney's FastPlay, your movie and a selection of bonus features will begin automatically.",
+  "Use control+space to enable the international keyboard, make sure to disable it afterward.",
+  "Why, isn't this test supercalifragilisticexpialidocious?"
+]];
 var sentance = null;
 var indexes = [];
 var typedin = "";
@@ -37,6 +34,7 @@ var interval;
 var warm_up = localStorage.getItem("warm-up");
 var trialBest = localStorage.getItem("trial");
 var lastKeyTyped = null;
+var opOpen = "none";
 
 function loadListeners() {
   window.addEventListener("keydown", function(e) {
@@ -47,8 +45,8 @@ function loadListeners() {
     document.getElementById("warm-up").textContent = "Warm-up Best: " + warm_up + "s";
   }
   
-  if (trial != null) {
-    document.getElemebtById("trial").textContent = "Trial Best: " + trialBest + "s";
+  if (trialBest != null) {
+    document.getElementById("trial").textContent = "Trial Best: " + trialBest + "s";
   }
 }
 
@@ -58,7 +56,7 @@ function keyDown(key) {
   var cin = document.getElementById("cin");
   
   if (key.length == 1) {
-    if (home || input.textContent == " ") {
+    if (home || input.textContent == " ") {
       input.textContent = "";
       home = false;
       typedin = "";
@@ -79,7 +77,7 @@ function keyDown(key) {
   if (key == "." || key == "!" || key == "?") {
     var typed = typedin;
     
-    input.textContent = " ";
+    input.textContent = " ";
     typedin = "";
     
     if (sentance == null && (typed == "Warm-up." || typed == "Trial.")) {
@@ -119,18 +117,14 @@ function keyDown(key) {
         
         clearInterval(interval);
         
-        if (trial) {
-          if (trialBest == null || time < trialBest) {
-            localStorage.setItem("trial", time);
-            trialBest = time;
-            document.getElementById("trial").textContent = "Trial Best: " + time + "s";
-          }
-        } else {
-          if (warm_up == null || time < warm_up) {
-            localStorage.setItem("warm-up", time);
-            warm_up = time;
-            document.getElementById("warm-up").textContent = "Warm-up Best: " + time + "s";
-          }
+        if (trial && (!!trialBest || time < trialBest)) {
+          localStorage.setItem("trial", time);
+          trialBest = time;
+          document.getElementById("trial").textContent = "Trial Best: " + time + "s";
+        } else if (!trial && (!!warm_up || time < warm_up)) {
+          localStorage.setItem("warm-up", time);
+          warm_up = time;
+          document.getElementById("warm-up").textContent = "Warm-up Best: " + time + "s";
         }
         
         time = 0;
@@ -192,5 +186,19 @@ function keyDown(key) {
         cin.style.backgroundColor = "#ffffff";
       }, 500);
     }
+  }
+}
+
+function opClick(div) {
+  if (opOpen == div) {
+    document.getElementById(div).style.top = "-100%";
+    opOpen = "none";
+  } else if (opOpen != "none") {
+    document.getElementById(opOpen).style.top = "-100%";
+    document.getElementById(div).style.top = "7.5%";
+    opOpen = div;
+  } else {
+    document.getElementById(div).style.top = "7.5%";
+    opOpen = div;
   }
 }
