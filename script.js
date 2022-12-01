@@ -1,4 +1,4 @@
-/* Version 2022.12.01.09.15 */
+/* Version 2022.12.01.09.22 */
 
 var home = true;
 var trial = null;
@@ -40,6 +40,8 @@ function loadListeners() {
   window.addEventListener("keydown", function(e) {
     keyDown(e.key);
   });
+  
+  alert(typeof(warm_up) != "string");
   
   if (typeof(warm_up) == "string") {
     document.getElementById("warm-up").textContent = "Warm-up Best: " + warm_up + "s";
@@ -117,11 +119,11 @@ function keyDown(key) {
         
         clearInterval(interval);
         
-        if (trial && (typeof(trialBest) != "number" || time < trialBest)) {
+        if (trial && (typeof(trialBest) != "string" || time < trialBest)) {
           localStorage.setItem("trial", time);
           trialBest = time;
           document.getElementById("trial").textContent = "Trial Best: " + time + "s";
-        } else if (!trial && (typeof(trialBest) != "number" || time < warm_up)) {
+        } else if (!trial && (typeof(warm_up) != "string" || time < warm_up)) {
           localStorage.setItem("warm-up", time);
           warm_up = time;
           document.getElementById("warm-up").textContent = "Warm-up Best: " + time + "s";
