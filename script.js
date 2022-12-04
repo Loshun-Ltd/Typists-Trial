@@ -1,4 +1,4 @@
-/* Version 2022.12.03.19.43 */
+/* Version 2022.12.03.19.56 */
 
 var home = true;
 var trial = null;
@@ -93,6 +93,8 @@ function keyDown(key) {
     typedin = "";
     
     if (sentence == null && (typed == "Warm-up." || typed == "Trial.")) {
+      playSound("assets/sfx/default/mode.mp3");
+      
       trial = typed == "Trial.";
       
       let ind = trial ? 1 : 0;
@@ -106,9 +108,6 @@ function keyDown(key) {
       
       indexes.push(i);
       
-      var aud = new Audio("assets/sfx/default/mode.mp3");
-      aud.play();
-      
       setTimeout(function() {
         cin.style.backgroundColor = "#ffffff";
       }, 500);
@@ -119,6 +118,8 @@ function keyDown(key) {
       }, 1000);
     } else if (sentence != null && typed == sentence) {
       if (indexes.length == 5) {
+        playSound("assets/sfx/default/mode.mp3");
+        
         home = true;
         sentence = null;
         indexes = [];
@@ -149,6 +150,8 @@ function keyDown(key) {
           cin.style.backgroundColor = "#ffffff";
         }, 500);
       } else {
+        playSound("assets/sfx/default/good.mp3");
+        
         let ind = trial ? 1 : 0;
         let b = true;
         let i = 0;
@@ -195,6 +198,8 @@ function keyDown(key) {
       
       clearInterval(interval);
     } else {
+      playSound("assets/sfx/default/bad.mp3");
+      
       cin.style.backgroundColor = "#fabeb4";
       
       setTimeout(function() {
@@ -230,4 +235,9 @@ function darkTheme() {
     localStorage.setItem("dark", "false");
     dark = "false";
   }
+}
+
+function playSound(link) {
+  var a = Audio(link);
+  a.play();
 }
