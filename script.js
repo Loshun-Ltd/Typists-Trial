@@ -1,4 +1,4 @@
-/* Version 2022.12.03.20.14 */
+/* Version 2022.12.04.11.26 */
 
 var home = true;
 var trial = null;
@@ -235,11 +235,25 @@ function darkTheme() {
   if (dark == "false") {
     document.body.style.backgroundColor = "black";
     document.getElementById("outer").style.backgroundColor = "black";
+    document.getElementById("topnav").style.backgroundColor = "darkgray";
+    document.getElementById("play").style.backgroundColor = "darkgray";
+    document.getElementById("cin").style.backgroundColor = "darkgray";
+    document.getElementById("play").style.color = "white";
+    document.getElementById("cin").style.color = "white";
+    document.getElementById("infot").style.color = "white";
+    document.getElementById("infob").style.color = "white";
     localStorage.setItem("dark", "true");
     dark = "true";
   } else {
     document.body.style.backgroundColor = "#e6fff0";
     document.getElementById("outer").style.backgroundColor = "#e6fff0";
+    document.getElementById("topnav").style.backgroundColor = "#3c64f0";
+    document.getElementById("play").style.backgroundColor = "#ffffff";
+    document.getElementById("cin").style.backgroundColor = "#ffffff";
+    document.getElementById("play").style.color = "#000000";
+    document.getElementById("cin").style.color = "#000000";
+    document.getElementById("infot").style.color = "#3c64f0";
+    document.getElementById("infob").style.color = "#3c64f0";
     localStorage.setItem("dark", "false");
     dark = "false";
   }
