@@ -1,4 +1,4 @@
-/* Version 2022.12.03.19.56 */
+/* Version 2022.12.03.19.59 */
 
 var home = true;
 var trial = null;
@@ -238,6 +238,6 @@ function darkTheme() {
 }
 
 function playSound(link) {
-  var a = Audio(link);
+  var a = new Audio(link);
   a.play();
 }
