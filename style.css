@@ -1,4 +1,4 @@
-/* Version 2022.12.03.19.43 */
+/* Version 2022.12.04.11.44 */
 
 html {
   height: 100%;
@@ -13,7 +13,7 @@ body {
   padding: 0%;
 }
 
-.topnav {
+#topnav {
   background-color: #3c64f0;
   color: #ffffff;
   height: 7.5%;
@@ -22,13 +22,21 @@ body {
   width: 100%;
 }
 
-.topnav img {
+.imgdiv {
   height: 100%;
-  width: 4.21875%;
+  width: 4.21875%
 }
 
 #menu {
   float: left;
+}
+
+.topimg {
+  display: block;
+  height: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
 }
 
 .title {
@@ -41,7 +49,7 @@ body {
   float: right;
   font-size: 250%;
   margin: 0%;
-  width: 33.333%;
+  width: 33.333333333333336%;
 }
 
 #menudiv {
@@ -79,7 +87,11 @@ body {
   font-size: 200%;
 }
 
-.rimg {
+#rimg1 {
+  float: right;
+}
+
+#rimg2 {
   float: right;
 }
 
