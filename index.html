@@ -1,4 +1,4 @@
-<!-- Version 2022.12.01.09.15 -->
+<!-- Version 2022.12.03.19.43 -->
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -50,13 +50,34 @@
     </div>
     <div id="helpdiv">
       <p>
-        Sorry! W.I.P.
+        Type the prompt that is shown in the top box.
+        If you are on the menu screen, type
+        <u>
+          Warm-up.
+        </u>
+        or
+        <u>
+          Trial.
+        </u> to get started.
+        Type
+        <u>
+          Reset.
+        </u>
+        to return to the menu screen.
+      </p>
+      <p>
+        Questions? Comments? Concerns? Complaints?
+        Join the Loshun Ltd. Discord server to speak with us.
+        <a href="https://discord.gg/Pv6agYuc4C" hreflang="en" target="_blank">
+          Link
+        </a>
       </p>
     </div>
     <div id="settingsdiv">
-      <p>
-        Sorry! W.I.P.
-      </p>
+      <input class="checkbox" id="dark" name="dark" onclick="darkTheme()" type="checkbox"/>
+      <label class="label" for="dark" id="darkl">
+        Dark Theme
+      </label>
     </div>
     <div class="main">
       <center id="bigger">
@@ -76,7 +97,7 @@
             </h2>
           </div>
           <br/>
-          <div class="outer">
+          <div id="outer">
             <div class="play">
               <p id="prompt">
                 Welcome to the Typist's Trial, this will test your ability to accurately and efficiently replicate displayed text. To begin, please type 'Warm-up.' for a simpler challenge or 'Trial.' for the real deal. Good luck!
@@ -110,7 +131,7 @@
     </div>
     <div id="footer">
       <p>
-        Copyright © 2022 Loshun Ltd. Version 22.12.01 All Rights Reserved
+        Copyright © 2022 Loshun Ltd. Version 22.12.03 All Rights Reserved
       </p>
     </div>
   </body>
