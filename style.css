@@ -1,4 +1,4 @@
-/* Version 2022.12.04.11.44 */
+/* Version 2022.12.04.11.54 */
 
 html {
   height: 100%;
@@ -32,10 +32,10 @@ body {
 }
 
 .topimg {
-  display: block;
   height: 60%;
-  margin-left: auto;
-  margin-right: auto;
+  left: 20%;
+  position: relative;
+  top: 20%;
   width: 60%;
 }
 
