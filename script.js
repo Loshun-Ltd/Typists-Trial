@@ -1,4 +1,4 @@
-/* Version 2022.12.03.19.59 */
+/* Version 2022.12.03.20.14 */
 
 var home = true;
 var trial = null;
@@ -93,7 +93,7 @@ function keyDown(key) {
     typedin = "";
     
     if (sentence == null && (typed == "Warm-up." || typed == "Trial.")) {
-      playSound("assets/sfx/default/mode.mp3");
+      playSound("assets/sfx/default/in.mp3");
       
       trial = typed == "Trial.";
       
@@ -118,7 +118,25 @@ function keyDown(key) {
       }, 1000);
     } else if (sentence != null && typed == sentence) {
       if (indexes.length == 5) {
-        playSound("assets/sfx/default/mode.mp3");
+        let played = false;
+        
+        if (trial && (typeof(trialBest) != "string" || time < trialBest)) {
+          playSound("assets/sfx/default/high.mp3");
+          played = true;
+          localStorage.setItem("trial", time);
+          trialBest = localStorage.getItem("trial");
+          document.getElementById("trial").textContent = "Trial Best: " + time + "s";
+        } else if (!trial && (typeof(warm_up) != "string" || time < warm_up)) {
+          playSound("assets/sfx/default/high.mp3");
+          played = true;
+          localStorage.setItem("warm-up", time);
+          warm_up = localStorage.getItem("warm-up");
+          document.getElementById("warm-up").textContent = "Warm-up Best: " + time + "s";
+        }
+        
+        if (!played) {
+          playSound("assets/sfx/default/out.mp3");
+        }
         
         home = true;
         sentence = null;
@@ -132,16 +150,6 @@ function keyDown(key) {
         document.getElementById("time").innerHTML = "Time: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
         
         clearInterval(interval);
-        
-        if (trial && (typeof(trialBest) != "string" || time < trialBest)) {
-          localStorage.setItem("trial", time);
-          trialBest = localStorage.getItem("trial");
-          document.getElementById("trial").textContent = "Trial Best: " + time + "s";
-        } else if (!trial && (typeof(warm_up) != "string" || time < warm_up)) {
-          localStorage.setItem("warm-up", time);
-          warm_up = localStorage.getItem("warm-up");
-          document.getElementById("warm-up").textContent = "Warm-up Best: " + time + "s";
-        }
         
         time = 0;
         trial = null;
