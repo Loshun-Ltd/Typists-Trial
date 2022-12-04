@@ -1,4 +1,4 @@
-/* Version 2022.12.01.09.37 */
+/* Version 2022.12.03.19.43 */
 
 var home = true;
 var trial = null;
@@ -25,7 +25,7 @@ var prompts = [[
   "Use control+space to enable the international keyboard, make sure to disable it afterward.",
   "Why, isn't this test supercalifragilisticexpialidocious?"
 ]];
-var sentance = null;
+var sentence = null;
 var indexes = [];
 var typedin = "";
 var clears = 0;
@@ -35,6 +35,7 @@ var warm_up = localStorage.getItem("warm-up");
 var trialBest = localStorage.getItem("trial");
 var lastKeyTyped = null;
 var opOpen = "none";
+var dark = localStorage.getItem("dark");
 
 function loadListeners() {
   window.addEventListener("keydown", function(e) {
@@ -47,6 +48,17 @@ function loadListeners() {
   
   if (typeof(trialBest) == "string") {
     document.getElementById("trial").textContent = "Trial Best: " + trialBest + "s";
+  }
+  
+  if (typeof(dark) != "string") {
+    localStorage.setItem("dark", "false");
+    dark = "false";
+  }
+  
+  if (dark == "true") {
+    dark = "false";
+    darkTheme();
+    document.getElementById("dark").checked = true;
   }
 }
 
@@ -80,19 +92,22 @@ function keyDown(key) {
     input.textContent = " ";
     typedin = "";
     
-    if (sentance == null && (typed == "Warm-up." || typed == "Trial.")) {
+    if (sentence == null && (typed == "Warm-up." || typed == "Trial.")) {
       trial = typed == "Trial.";
       
       let ind = trial ? 1 : 0;
       let i = Math.floor(Math.random() * prompts[ind].length);
 
-      sentance = prompts[ind][i];
-      text.textContent = sentance;
+      sentence = prompts[ind][i];
+      text.textContent = sentence;
       cin.style.backgroundColor = "#f5ffa5";
       document.getElementById("clears").textContent = "Clears: 0/5";
       document.getElementById("time").textContent = "Time: 0s";
       
       indexes.push(i);
+      
+      var aud = new Audio("assets/sfx/default/mode.mp3");
+      aud.play();
       
       setTimeout(function() {
         cin.style.backgroundColor = "#ffffff";
@@ -102,10 +117,10 @@ function keyDown(key) {
         time++;
         document.getElementById("time").textContent = "Time: " + time + "s";
       }, 1000);
-    } else if (sentance != null && typed == sentance) {
+    } else if (sentence != null && typed == sentence) {
       if (indexes.length == 5) {
         home = true;
-        sentance = null;
+        sentence = null;
         indexes = [];
         clears = 0;
         text.textContent = trial
@@ -149,8 +164,8 @@ function keyDown(key) {
           }
         }
         
-        sentance = prompts[ind][i];
-        text.textContent = sentance;
+        sentence = prompts[ind][i];
+        text.textContent = sentence;
         cin.style.backgroundColor = "#b4fabe";
         clears++;
         document.getElementById("clears").textContent = "Clears: " + clears + "/5";
@@ -164,7 +179,7 @@ function keyDown(key) {
     } else if (typed == "Reset.") {
       home = true;
       trial = null;
-      sentance = null;
+      sentence = null;
       indexes = [];
       clears = 0;
       time = 0;
@@ -200,5 +215,19 @@ function opClick(div) {
   } else {
     document.getElementById(div).style.top = "7.5%";
     opOpen = div;
+  }
+}
+
+function darkTheme() {
+  if (dark == "false") {
+    document.body.style.backgroundColor = "black";
+    document.getElementById("outer").style.backgroundColor = "black";
+    localStorage.setItem("dark", "true");
+    dark = "true";
+  } else {
+    document.body.style.backgroundColor = "#e6fff0";
+    document.getElementById("outer").style.backgroundColor = "#e6fff0";
+    localStorage.setItem("dark", "false");
+    dark = "false";
   }
 }
