@@ -1,4 +1,4 @@
-/* Version 2022.12.04.21.27 */
+/* Version 2022.12.05.09.29 */
 
 var home = true;
 var trial = null;
@@ -251,13 +251,19 @@ function darkTheme() {
   if (dark == "false") {
     document.body.style.backgroundColor = "black";
     document.getElementById("outer").style.backgroundColor = "black";
-    document.getElementById("topnav").style.backgroundColor = "darkgray";
+    document.getElementById("topnav").style.backgroundColor = "silver";
     document.getElementById("play").style.backgroundColor = "darkgray";
     document.getElementById("cin").style.backgroundColor = "darkgray";
     document.getElementById("play").style.color = "white";
     document.getElementById("cin").style.color = "white";
     document.getElementById("infot").style.color = "white";
     document.getElementById("infob").style.color = "white";
+    document.getElementById("menudiv").style.backgroundColor = "gray";
+    document.getElementById("helpdiv").style.backgroundColor = "gray";
+    document.getElementById("settingsdiv").style.backgroundColor = "gray";
+    document.getElementById("menudiv").style.color = "white";
+    document.getElementById("helpdiv").style.color = "white";
+    document.getElementById("settingsdiv").style.color = "white";
     localStorage.setItem("dark", "true");
     dark = "true";
   } else {
@@ -270,6 +276,12 @@ function darkTheme() {
     document.getElementById("cin").style.color = "#000000";
     document.getElementById("infot").style.color = "#3c64f0";
     document.getElementById("infob").style.color = "#3c64f0";
+    document.getElementById("menudiv").style.backgroundColor = "#ffffff";
+    document.getElementById("helpdiv").style.backgroundColor = "#ffffff";
+    document.getElementById("settingsdiv").style.backgroundColor = "#ffffff";
+    document.getElementById("menudiv").style.color = "#000000";
+    document.getElementById("helpdiv").style.color = "#000000";
+    document.getElementById("settingsdiv").style.color = "#000000";
     localStorage.setItem("dark", "false");
     dark = "false";
   }
