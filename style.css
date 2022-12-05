@@ -1,4 +1,4 @@
-/* Version 2022.12.04.11.54 */
+/* Version 2022.12.05.09.29 */
 
 html {
   height: 100%;
@@ -155,8 +155,17 @@ body {
   width: 80%;
 }
 
+#hrdiv {
+  width: 100%;
+}
+
+.hrdiv {
+  float: left;
+  width: 5%;
+}
+
 hr {
-  color: #3c64f0;
+  width: 75%;
 }
 
 #prompt {
