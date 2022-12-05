@@ -1,4 +1,4 @@
-/* Version 2022.12.05.09.29 */
+/* Version 2022.12.05.09.38 */
 
 var home = true;
 var trial = null;
@@ -264,6 +264,7 @@ function darkTheme() {
     document.getElementById("menudiv").style.color = "white";
     document.getElementById("helpdiv").style.color = "white";
     document.getElementById("settingsdiv").style.color = "white";
+    document.getElementById("footer").style.color = "white";
     localStorage.setItem("dark", "true");
     dark = "true";
   } else {
@@ -282,6 +283,7 @@ function darkTheme() {
     document.getElementById("menudiv").style.color = "#000000";
     document.getElementById("helpdiv").style.color = "#000000";
     document.getElementById("settingsdiv").style.color = "#000000";
+    document.getElementById("footer").style.color = "#000000";
     localStorage.setItem("dark", "false");
     dark = "false";
   }
