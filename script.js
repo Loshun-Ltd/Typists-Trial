@@ -1,4 +1,4 @@
-/* Version 2022.12.04.11.26 */
+/* Version 2022.12.04.21.27 */
 
 var home = true;
 var trial = null;
@@ -109,7 +109,11 @@ function keyDown(key) {
       indexes.push(i);
       
       setTimeout(function() {
-        cin.style.backgroundColor = "#ffffff";
+        if (dark == "true") {
+          cin.style.backgroundColor = "darkgray";
+        } else {
+          cin.style.backgroundColor = "#ffffff";
+        }
       }, 500);
       
       interval = setInterval(function() {
@@ -155,7 +159,11 @@ function keyDown(key) {
         trial = null;
         
         setTimeout(function() {
-          cin.style.backgroundColor = "#ffffff";
+          if (dark == "true") {
+            cin.style.backgroundColor = "darkgray";
+          } else {
+            cin.style.backgroundColor = "#ffffff";
+          }
         }, 500);
       } else {
         playSound("assets/sfx/default/good.mp3");
@@ -184,7 +192,11 @@ function keyDown(key) {
         indexes.push(i);
         
         setTimeout(function() {
-          cin.style.backgroundColor = "#ffffff";
+          if (dark == "true") {
+            cin.style.backgroundColor = "darkgray";
+          } else  {
+            cin.style.backgroundColor = "#ffffff";
+          }
         }, 500);
       }
     } else if (typed == "Reset.") {
@@ -211,7 +223,11 @@ function keyDown(key) {
       cin.style.backgroundColor = "#fabeb4";
       
       setTimeout(function() {
-        cin.style.backgroundColor = "#ffffff";
+        if (dark == "true") {
+          cin.style.backgroundColor = "darkgray";
+        } else {
+          cin.style.backgroundColor = "#ffffff";
+        }
       }, 500);
     }
   }
