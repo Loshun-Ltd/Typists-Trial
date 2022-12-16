@@ -1,4 +1,4 @@
-/* Version 2022.12.05.11.06 */
+/* Version 2022.12.16.14.37 */
 
 var home = true;
 var trial = null;
@@ -14,7 +14,7 @@ var prompts = [[
   "The record time on the trial is 214 seconds.",
   "What's the longest town name in Wales?"
 ],[
-  "01001000 01100101 01101100 01101100 01101111.",
+  "01001000 01100101 01101100 01101100 01101111 00100000 01010111 01001111 01010010 01001100 01000100!",
   "Attention parents and grandparents of young children, Gerber Life is accepting applications for their affordable grow-up plan!",
   "Hello, we've been trying to reach you about your car's extended warranty.",
   "I'm afraid you've contracted pneumonoultramicroscopicsilicovolcanoconiosis.",
@@ -224,7 +224,7 @@ function keyDown(key) {
       
       setTimeout(function() {
         if (dark == "true") {
-          cin.style.backgroundColor = "darkgray";
+          cin.style.backgroundColor = "gray";
         } else {
           cin.style.backgroundColor = "#ffffff";
         }
@@ -265,6 +265,26 @@ function darkTheme() {
     document.getElementById("helpdiv").style.color = "white";
     document.getElementById("settingsdiv").style.color = "white";
     document.getElementById("footer").style.color = "white";
+    document.getElementById("_0").style.borderColor = "white";
+    document.getElementById("_1").style.borderColor = "white";
+    document.getElementById("_2").style.borderColor = "white";
+    document.getElementById("_3").style.borderColor = "white";
+    document.getElementById("_4").style.borderColor = "white";
+    document.getElementById("_5").style.borderColor = "white";
+    document.getElementById("_6").style.borderColor = "white";
+    document.getElementById("_7").style.borderColor = "white";
+    document.getElementById("_8").style.borderColor = "white";
+    document.getElementById("_9").style.borderColor = "white";
+    document.getElementById("_10").style.borderColor = "white";
+    document.getElementById("_11").style.borderColor = "white";
+    document.getElementById("_12").style.borderColor = "white";
+    document.getElementById("_13").style.borderColor = "white";
+    document.getElementById("_14").style.borderColor = "white";
+    document.getElementById("_15").style.borderColor = "white";
+    document.getElementById("_16").style.borderColor = "white";
+    document.getElementById("_17").style.borderColor = "white";
+    document.getElementById("_18").style.borderColor = "white";
+    document.getElementById("_19").style.borderColor = "white";
     localStorage.setItem("dark", "true");
     dark = "true";
   } else {
@@ -284,6 +304,26 @@ function darkTheme() {
     document.getElementById("helpdiv").style.color = "#000000";
     document.getElementById("settingsdiv").style.color = "#000000";
     document.getElementById("footer").style.color = "#000000";
+    document.getElementById("_0").style.borderColor = "#3c64f0";
+    document.getElementById("_1").style.borderColor = "#3c64f0";
+    document.getElementById("_2").style.borderColor = "#3c64f0";
+    document.getElementById("_3").style.borderColor = "#3c64f0";
+    document.getElementById("_4").style.borderColor = "#3c64f0";
+    document.getElementById("_5").style.borderColor = "#3c64f0";
+    document.getElementById("_6").style.borderColor = "#3c64f0";
+    document.getElementById("_7").style.borderColor = "#3c64f0";
+    document.getElementById("_8").style.borderColor = "#3c64f0";
+    document.getElementById("_9").style.borderColor = "#3c64f0";
+    document.getElementById("_10").style.borderColor = "#3c64f0";
+    document.getElementById("_11").style.borderColor = "#3c64f0";
+    document.getElementById("_12").style.borderColor = "#3c64f0";
+    document.getElementById("_13").style.borderColor = "#3c64f0";
+    document.getElementById("_14").style.borderColor = "#3c64f0";
+    document.getElementById("_15").style.borderColor = "#3c64f0";
+    document.getElementById("_16").style.borderColor = "#3c64f0";
+    document.getElementById("_17").style.borderColor = "#3c64f0";
+    document.getElementById("_18").style.borderColor = "#3c64f0";
+    document.getElementById("_19").style.borderColor = "#3c64f0";
     localStorage.setItem("dark", "false");
     dark = "false";
   }
