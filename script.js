@@ -1,4 +1,4 @@
-/* Version 2022.12.16.14.37 */
+/* Version 2022.12.16.14.54 */
 
 var home = true;
 var trial = null;
@@ -110,7 +110,7 @@ function keyDown(key) {
       
       setTimeout(function() {
         if (dark == "true") {
-          cin.style.backgroundColor = "darkgray";
+          cin.style.backgroundColor = "gray";
         } else {
           cin.style.backgroundColor = "#ffffff";
         }
@@ -160,7 +160,7 @@ function keyDown(key) {
         
         setTimeout(function() {
           if (dark == "true") {
-            cin.style.backgroundColor = "darkgray";
+            cin.style.backgroundColor = "gray";
           } else {
             cin.style.backgroundColor = "#ffffff";
           }
@@ -193,7 +193,7 @@ function keyDown(key) {
         
         setTimeout(function() {
           if (dark == "true") {
-            cin.style.backgroundColor = "darkgray";
+            cin.style.backgroundColor = "gray";
           } else  {
             cin.style.backgroundColor = "#ffffff";
           }
