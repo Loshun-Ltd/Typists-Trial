@@ -1,4 +1,4 @@
-/* Version 2022.12.20.21.32 */
+/* Version 2022.12.20.21.39 */
 
 var home = true;
 var trial = null;
@@ -285,6 +285,26 @@ function darkTheme() {
     document.getElementById("_17").style.borderColor = "white";
     document.getElementById("_18").style.borderColor = "white";
     document.getElementById("_19").style.borderColor = "white";
+    document.getElementById("_0").style.backgroundColor = "white";
+    document.getElementById("_1").style.backgroundColor = "white";
+    document.getElementById("_2").style.backgroundColor = "white";
+    document.getElementById("_3").style.backgroundColor = "white";
+    document.getElementById("_4").style.backgroundColor = "white";
+    document.getElementById("_5").style.backgroundColor = "white";
+    document.getElementById("_6").style.backgroundColor = "white";
+    document.getElementById("_7").style.backgroundColor = "white";
+    document.getElementById("_8").style.backgroundColor = "white";
+    document.getElementById("_9").style.backgroundColor = "white";
+    document.getElementById("_10").style.backgroundColor = "white";
+    document.getElementById("_11").style.backgroundColor = "white";
+    document.getElementById("_12").style.backgroundColor = "white";
+    document.getElementById("_13").style.backgroundColor = "white";
+    document.getElementById("_14").style.backgroundColor = "white";
+    document.getElementById("_15").style.backgroundColor = "white";
+    document.getElementById("_16").style.backgroundColor = "white";
+    document.getElementById("_17").style.backgroundColor = "white";
+    document.getElementById("_18").style.backgroundColor = "white";
+    document.getElementById("_19").style.backgroundColor = "white";
     localStorage.setItem("dark", "true");
     dark = "true";
   } else {
@@ -324,6 +344,26 @@ function darkTheme() {
     document.getElementById("_17").style.borderColor = "#3c64f0";
     document.getElementById("_18").style.borderColor = "#3c64f0";
     document.getElementById("_19").style.borderColor = "#3c64f0";
+    document.getElementById("_0").style.backgroundColor = "#3c64f0";
+    document.getElementById("_1").style.backgroundColor = "#3c64f0";
+    document.getElementById("_2").style.backgroundColor = "#3c64f0";
+    document.getElementById("_3").style.backgroundColor = "#3c64f0";
+    document.getElementById("_4").style.backgroundColor = "#3c64f0";
+    document.getElementById("_5").style.backgroundColor = "#3c64f0";
+    document.getElementById("_6").style.backgroundColor = "#3c64f0";
+    document.getElementById("_7").style.backgroundColor = "#3c64f0";
+    document.getElementById("_8").style.backgroundColor = "#3c64f0";
+    document.getElementById("_9").style.backgroundColor = "#3c64f0";
+    document.getElementById("_10").style.backgroundColor = "#3c64f0";
+    document.getElementById("_11").style.backgroundColor = "#3c64f0";
+    document.getElementById("_12").style.backgroundColor = "#3c64f0";
+    document.getElementById("_13").style.backgroundColor = "#3c64f0";
+    document.getElementById("_14").style.backgroundColor = "#3c64f0";
+    document.getElementById("_15").style.backgroundColor = "#3c64f0";
+    document.getElementById("_16").style.backgroundColor = "#3c64f0";
+    document.getElementById("_17").style.backgroundColor = "#3c64f0";
+    document.getElementById("_18").style.backgroundColor = "#3c64f0";
+    document.getElementById("_19").style.backgroundColor = "#3c64f0";
     localStorage.setItem("dark", "false");
     dark = "false";
   }
