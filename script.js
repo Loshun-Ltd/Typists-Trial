@@ -1,4 +1,4 @@
-/* Version 2022.12.16.14.54 */
+/* Version 2022.12.20.21.32 */
 
 var home = true;
 var trial = null;
@@ -258,9 +258,9 @@ function darkTheme() {
     document.getElementById("cin").style.color = "white";
     document.getElementById("infot").style.color = "white";
     document.getElementById("infob").style.color = "white";
-    document.getElementById("menudiv").style.backgroundColor = "silver";
-    document.getElementById("helpdiv").style.backgroundColor = "silver";
-    document.getElementById("settingsdiv").style.backgroundColor = "silver";
+    document.getElementById("menudiv").style.backgroundColor = "darkgray";
+    document.getElementById("helpdiv").style.backgroundColor = "darkgray";
+    document.getElementById("settingsdiv").style.backgroundColor = "darkgray";
     document.getElementById("menudiv").style.color = "white";
     document.getElementById("helpdiv").style.color = "white";
     document.getElementById("settingsdiv").style.color = "white";
