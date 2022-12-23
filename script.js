@@ -1,4 +1,4 @@
-/* Version 2022.12.20.21.39 */
+/* Version 2022.12.23.11.47 */
 
 var home = true;
 var trial = null;
@@ -59,6 +59,23 @@ function loadListeners() {
     dark = "false";
     darkTheme();
     document.getElementById("dark").checked = true;
+  }
+  
+  if (inIframe()) {
+    document.getElementById("title").style.fontSize = "150%";
+    document.getElementById("prompt").style.fontSize = "75%";
+    document.getElementById("input").style.fontSize = "75%";
+    document.getElementById("menudivp").style.fontSize = "90%";
+    document.getElementById("helpdivp").style.fontSize = "90%";
+    document.getElementById("darkl").style.fontSize = "90%";
+  }
+}
+
+function inIframe() {
+  try {
+    return window.self !== window.top;
+  } catch (e) {
+    return true;
   }
 }
 
@@ -151,7 +168,6 @@ function keyDown(key) {
           : "Well done, you're ready for trial mode! Type 'Warm-up.' again to try for a better time or 'Trial.' for the real deal. Good luck!";
         cin.style.backgroundColor = "#f5ffa5";
         document.getElementById("clears").innerHTML = "Clears: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
-        document.getElementById("time").innerHTML = "Time: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
         
         clearInterval(interval);
         
