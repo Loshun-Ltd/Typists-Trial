@@ -1,4 +1,4 @@
-/* Version 2022.12.23.11.47 */
+/* Version 2022.12.23.21.19 */
 
 var home = true;
 var trial = null;
@@ -68,6 +68,8 @@ function loadListeners() {
     document.getElementById("menudivp").style.fontSize = "90%";
     document.getElementById("helpdivp").style.fontSize = "90%";
     document.getElementById("darkl").style.fontSize = "90%";
+    document.getElementById("{").style.fontSize = "150%";
+    document.getElementById("}").style.fontSize = "150%";
   }
 }
 
@@ -216,6 +218,8 @@ function keyDown(key) {
         }, 500);
       }
     } else if (typed == "Reset.") {
+      playSound("assets/sfx/default/out.mp3");
+      
       home = true;
       trial = null;
       sentence = null;
