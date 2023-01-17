@@ -1,4 +1,4 @@
-/* Version 2022.12.23.21.19 */
+/* Version 2023.01.17.13.16 */
 
 var home = true;
 var trial = null;
@@ -36,6 +36,7 @@ var trialBest = localStorage.getItem("trial");
 var lastKeyTyped = null;
 var opOpen = "none";
 var dark = localStorage.getItem("dark");
+var auto = localStorage.getItem("auto");
 
 function loadListeners() {
   window.addEventListener("keydown", function(e) {
@@ -59,6 +60,15 @@ function loadListeners() {
     dark = "false";
     darkTheme();
     document.getElementById("dark").checked = true;
+  }
+  
+  if (typeof(auto) != "string") {
+    localStorage.setItem("auto", "false");
+    auto = "false";
+  }
+  
+  if (auto == "true") {
+    document.getElementById("auto").checked = true;
   }
   
   if (inIframe()) {
@@ -105,7 +115,19 @@ function keyDown(key) {
     lastKeyTyped = key;
   }
   
-  if (key == "." || key == "!" || key == "?") {
+  if (auto == "true" && sentence != null && key.length == 1) {
+    if (sentence[input.textContent.length - 1] != key) {
+      input.textContent = " ";
+      
+      wrong();
+    }
+    
+    if (sentence.length == input.textContent.length) {
+      input.textContent = " ";
+      
+      right();
+    }
+  } else if (key == "." || key == "!" || key == "?") {
     var typed = typedin;
     
     input.textContent = " ";
@@ -140,83 +162,7 @@ function keyDown(key) {
         document.getElementById("time").textContent = "Time: " + time + "s";
       }, 1000);
     } else if (sentence != null && typed == sentence) {
-      if (indexes.length == 5) {
-        let played = false;
-        
-        if (trial && (typeof(trialBest) != "string" || time < trialBest)) {
-          playSound("assets/sfx/default/high.mp3");
-          played = true;
-          localStorage.setItem("trial", time);
-          trialBest = localStorage.getItem("trial");
-          document.getElementById("trial").textContent = "Trial Best: " + time + "s";
-        } else if (!trial && (typeof(warm_up) != "string" || time < warm_up)) {
-          playSound("assets/sfx/default/high.mp3");
-          played = true;
-          localStorage.setItem("warm-up", time);
-          warm_up = localStorage.getItem("warm-up");
-          document.getElementById("warm-up").textContent = "Warm-up Best: " + time + "s";
-        }
-        
-        if (!played) {
-          playSound("assets/sfx/default/out.mp3");
-        }
-        
-        home = true;
-        sentence = null;
-        indexes = [];
-        clears = 0;
-        text.textContent = trial
-          ? "Excellent job, you're a keyboard master! Type 'Warm-up.' to take a step back or 'Trial.' to try for a better time. Good luck!"
-          : "Well done, you're ready for trial mode! Type 'Warm-up.' again to try for a better time or 'Trial.' for the real deal. Good luck!";
-        cin.style.backgroundColor = "#f5ffa5";
-        document.getElementById("clears").innerHTML = "Clears: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
-        
-        clearInterval(interval);
-        
-        time = 0;
-        trial = null;
-        
-        setTimeout(function() {
-          if (dark == "true") {
-            cin.style.backgroundColor = "gray";
-          } else {
-            cin.style.backgroundColor = "#ffffff";
-          }
-        }, 500);
-      } else {
-        playSound("assets/sfx/default/good.mp3");
-        
-        let ind = trial ? 1 : 0;
-        let b = true;
-        let i = 0;
-        
-        while (b) {
-          i = Math.floor(Math.random() * prompts[ind].length);
-          b = false;
-          
-          for (let j = 0; j < indexes.length; j++) {
-            if (indexes[j] == i) {
-              b = true;
-            }
-          }
-        }
-        
-        sentence = prompts[ind][i];
-        text.textContent = sentence;
-        cin.style.backgroundColor = "#b4fabe";
-        clears++;
-        document.getElementById("clears").textContent = "Clears: " + clears + "/5";
-        
-        indexes.push(i);
-        
-        setTimeout(function() {
-          if (dark == "true") {
-            cin.style.backgroundColor = "gray";
-          } else  {
-            cin.style.backgroundColor = "#ffffff";
-          }
-        }, 500);
-      }
+      right();
     } else if (typed == "Reset.") {
       playSound("assets/sfx/default/out.mp3");
       
@@ -238,19 +184,111 @@ function keyDown(key) {
       
       clearInterval(interval);
     } else {
-      playSound("assets/sfx/default/bad.mp3");
-      
-      cin.style.backgroundColor = "#fabeb4";
-      
-      setTimeout(function() {
-        if (dark == "true") {
-          cin.style.backgroundColor = "gray";
-        } else {
-          cin.style.backgroundColor = "#ffffff";
-        }
-      }, 500);
+      wrong();
     }
   }
+}
+
+function right() {
+  if (indexes.length == 5) {
+    let played = false;
+    let text = document.getElementById("prompt");
+    let cin = document.getElementById("cin");
+
+    if (trial && (typeof(trialBest) != "string" || time < trialBest)) {
+      playSound("assets/sfx/default/high.mp3");
+      played = true;
+      localStorage.setItem("trial", time);
+      trialBest = localStorage.getItem("trial");
+      document.getElementById("trial").textContent = "Trial Best: " + time + "s";
+    } else if (!trial && (typeof(warm_up) != "string" || time < warm_up)) {
+      playSound("assets/sfx/default/high.mp3");
+      played = true;
+      localStorage.setItem("warm-up", time);
+      warm_up = localStorage.getItem("warm-up");
+      document.getElementById("warm-up").textContent = "Warm-up Best: " + time + "s";
+    }
+
+    if (!played) {
+      playSound("assets/sfx/default/out.mp3");
+    }
+
+    home = true;
+    sentence = null;
+    indexes = [];
+    clears = 0;
+    text.textContent = trial
+      ? "Excellent job, you're a keyboard master! Type 'Warm-up.' to take a step back or 'Trial.' to try for a better time. Good luck!"
+      : "Well done, you're ready for trial mode! Type 'Warm-up.' again to try for a better time or 'Trial.' for the real deal. Good luck!";
+    cin.style.backgroundColor = "#f5ffa5";
+    document.getElementById("clears").innerHTML = "Clears: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
+
+    clearInterval(interval);
+
+    time = 0;
+    trial = null;
+
+    setTimeout(function() {
+      if (dark == "true") {
+        cin.style.backgroundColor = "gray";
+      } else {
+        cin.style.backgroundColor = "#ffffff";
+      }
+    }, 500);
+  } else {
+    playSound("assets/sfx/default/good.mp3");
+
+    let ind = trial ? 1 : 0;
+    let b = true;
+    let i = 0;
+    let cin = document.getElementById("cin");
+
+    while (b) {
+      i = Math.floor(Math.random() * prompts[ind].length);
+      b = false;
+
+      for (let j = 0; j < indexes.length; j++) {
+        if (indexes[j] == i) {
+          b = true;
+        }
+      }
+    }
+
+    sentence = prompts[ind][i];
+    document.getElementById("prompt").textContent = sentence;
+
+    cin.style.backgroundColor = "#b4fabe";
+    clears++;
+    document.getElementById("clears").textContent = "Clears: " + clears + "/5";
+    document.getElementById("input").textContent = "";
+
+    indexes.push(i);
+
+    setTimeout(function() {
+      if (dark == "true") {
+        cin.style.backgroundColor = "gray";
+      } else  {
+        cin.style.backgroundColor = "#ffffff";
+      }
+    }, 500);
+  }
+}
+
+function wrong() {
+  var cin = document.getElementById("cin");
+  playSound("assets/sfx/default/bad.mp3");
+
+  cin.style.backgroundColor = "#fabeb4";
+  
+  document.getElementById("input").textContent = "";
+
+  setTimeout(function() {
+    if (dark == "true") {
+      cin.style.backgroundColor = "gray";
+    } else {
+      cin.style.backgroundColor = "#ffffff";
+    }
+  }, 500);
 }
 
 function opClick(div) {
@@ -392,4 +430,14 @@ function darkTheme() {
 function playSound(link) {
   var a = new Audio(link);
   a.play();
+}
+
+function instaReset() {
+  if (auto == "false") {
+    auto = "true";
+    localStorage.setItem("auto", "true");
+  } else {
+    auto = "false";
+    localStorage.setItem("auto", "false");
+  }
 }
