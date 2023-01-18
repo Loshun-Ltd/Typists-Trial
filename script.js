@@ -1,4 +1,4 @@
-/* Version 2023.01.18.07.24 */
+/* Version 2023.01.18.07.53 */
 
 var home = true;
 var trial = null;
@@ -81,6 +81,7 @@ function loadListeners() {
     document.getElementById("autol").style.fontSize = "90%";
     document.getElementById("{").style.fontSize = "150%";
     document.getElementById("}").style.fontSize = "150%";
+    document.getElementById("br").style.display = "none";
   }
 }
 
