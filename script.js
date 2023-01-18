@@ -1,4 +1,4 @@
-/* Version 2023.01.17.13.16 */
+/* Version 2023.01.18.07.24 */
 
 var home = true;
 var trial = null;
@@ -78,6 +78,7 @@ function loadListeners() {
     document.getElementById("menudivp").style.fontSize = "90%";
     document.getElementById("helpdivp").style.fontSize = "90%";
     document.getElementById("darkl").style.fontSize = "90%";
+    document.getElementById("autol").style.fontSize = "90%";
     document.getElementById("{").style.fontSize = "150%";
     document.getElementById("}").style.fontSize = "150%";
   }
