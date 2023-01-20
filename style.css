@@ -1,4 +1,4 @@
-/* Version 2022.12.25.01.29 */
+/* Version 2023.01.20.07.29 */
 
 html {
   height: 100%;
@@ -11,6 +11,7 @@ body {
   height: 100%;
   margin: 0%;
   padding: 0%;
+  user-select: none;
 }
 
 #topnav {
