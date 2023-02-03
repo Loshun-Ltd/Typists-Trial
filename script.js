@@ -1,4 +1,4 @@
-/* Version 2023.01.18.07.53 */
+/* Version 2023.02.02.18.54 */
 
 var home = true;
 var trial = null;
@@ -180,7 +180,7 @@ function keyDown(key) {
         "To begin, please type 'Warm-up.' for a simpler challenge or 'Trial.' for the real deal. Good luck!";
       input.textContent =
         "You'll see your typing here, end entries with a punctuation mark to submit. " +
-        "There is no deleting, precision is key. Click the reset button to return to this hub at any time.";
+        "There is no deleting, precision is key. Type 'Reset.' to return to this hub at any time.";
       document.getElementById("clears").innerHTML = "Clears: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
       document.getElementById("time").innerHTML = "Time: <u>&nbsp;&nbsp;&nbsp;&nbsp;</u>";
       
